@@ -25,8 +25,6 @@ namespace FluidSim2DProject
 
         //=============================================================================
         public Material m_transformMat;
-        //public Material m_noiseMat;
-        //RenderTexture[] m_noiseTex;
 
         //=============================================================================
 
@@ -87,13 +85,6 @@ namespace FluidSim2DProject
             CreateSurface(m_temperatureTex, RenderTextureFormat.RFloat, FilterMode.Bilinear);
             CreateSurface(m_pressureTex, RenderTextureFormat.RFloat, FilterMode.Point);
 
-            //=====================================================================================
-            //m_noiseTex = new RenderTexture[2];//速度
-            //CreateSurface(m_noiseTex, RenderTextureFormat.RGB111110Float, FilterMode.Point);
-
-
-            //Graphics.Blit(null, m_noiseTex[0], m_noiseMat);
-            //=====================================================================================
 
             //gui
             m_guiTex = new RenderTexture(m_width, m_height, 0, RenderTextureFormat.ARGB32);
@@ -273,13 +264,6 @@ namespace FluidSim2DProject
             Advect(m_velocityTex[READ], m_densityTex[READ], m_densityTex[WRITE], m_densityDissipation);
 
 
-            //================================
-            ////更新噪声
-            //Advect(m_velocityTex[READ], m_noiseTex[READ], m_noiseTex[WRITE], m_densityDissipation);
-
-            //Swap(m_noiseTex);
-            //================================
-
 
 
             Swap(m_velocityTex);
@@ -333,26 +317,10 @@ namespace FluidSim2DProject
             }
 
 
-            
-
-
             //使用最后渲染到的压力tex 计算出无散速度 Use the pressure tex that was last rendered into. This computes divergence free velocity
             SubtractGradient(m_velocityTex[READ], m_pressureTex[READ], m_velocityTex[WRITE]);
 
             Swap(m_velocityTex);
-
-
-            //粗粒转换
-            //================================
-            //RealTransform(m_velocityTex[READ], m_velocityTex[WRITE]);
-
-
-            ////
-            ////Graphics.Blit(null, m_guiTex, m_transform);//渲染到m_guiTex
-            ////
-
-            //Swap(m_velocityTex);
-            //================================
 
 
 
