@@ -1,7 +1,7 @@
 # RoughFluid
 
 
-不可压流体直接用的Scrawk大佬的代码（https://github.com/Scrawk/GPU-GEMS-2D-Fluid-Simulation）
+不可压流体直接用的Scrawk大佬的代码：https://github.com/Scrawk/GPU-GEMS-2D-Fluid-Simulation
 
 在SubtractGradient.shader中把压力场梯度代入我的方程转换。
 
