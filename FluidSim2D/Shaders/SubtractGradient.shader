@@ -142,7 +142,7 @@ Shader "FluidSim/SubtractGradient"
                 //N_real取3时：
                 //----------------------
                 float2 g_real = u1r + u1g + u1b;
-                g_real = g_real * 0.45;//文章第二个视频
+                g_real = g_real * 0.49;//文章第二个视频
                 //g_real = g_real * 0.5;//文章第一个视频
                 //----------------------
 
